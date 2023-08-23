@@ -32,4 +32,9 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # output it to the screen as a a table
 streamlit.dataframe(fruityvice_normalized)
 
-
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_ncx.cursor()
+my_cur.eecute(SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+my_data_row = my_cur.fetchone()
+streamlit.text("Hello from Snowflake:")
+streamlit.text(my_data_row)
